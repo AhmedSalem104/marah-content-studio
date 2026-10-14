@@ -1,0 +1,34 @@
+# Inactive template: copy to .github/workflows/notion-sync.yml after configuring NOTION_TOKEN.
+name: Scoped Notion mirror
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: notion-mirror
+  cancel-in-progress: false
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify sync implementation
+        run: python -m unittest discover -s tests -p 'test_sync_notion.py'
+      - name: Mirror authorized Notion scope
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: python automation/scripts/sync_notion.py
+      - name: Commit mirrored content only
+        run: |
+          git config user.name 'Notion mirror'
+          git config user.email 'notion-mirror@users.noreply.github.com'
+          git add -- content/notion/api-current
+          if ! git diff --cached --quiet; then
+            git commit -m 'Sync scoped Notion content'
+            git push
+          fi
