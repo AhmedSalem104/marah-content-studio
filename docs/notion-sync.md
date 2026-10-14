@@ -1,6 +1,6 @@
 # Future Notion API mirror
 
-This implementation is prepared but inactive. No integration credential is available, and the workflow is a template outside `.github/workflows`. The initial Notion export remains separate from `content/notion/api-current`.
+This implementation is prepared but paused. No integration credential is available. `.github/workflows/notion-sync.yml` is installed and guarded by the repository variable `NOTION_SYNC_ENABLED`; no job runs until it is set to `true`. The initial Notion export remains separate from `content/notion/api-current`.
 
 Create a read-only Notion integration, grant it access to root page `3e43ab32c440810e99edc6c7737c3119` and database `d49a1dc094ae49819be1d46059ef3821`, and provide its secret through `NOTION_TOKEN`. From the repository root run:
 
@@ -9,7 +9,7 @@ python -m unittest discover -s tests -p 'test_sync_notion.py'
 python automation/scripts/sync_notion.py
 ```
 
-For future scheduled execution, configure the repository secret and copy `automation/workflows/notion-sync.yml.template` into `.github/workflows/notion-sync.yml`. The template runs manually or hourly, serializes executions, and commits only the scoped mirror directory. It does not publish videos.
+For future scheduled execution, configure the repository secret `NOTION_TOKEN`, then set the repository variable `NOTION_SYNC_ENABLED` to `true`. Run the manual workflow once and verify its content before relying on the hourly schedule. The original template remains available under `automation/workflows/`. The template runs manually or hourly, serializes executions, and commits only the scoped mirror directory. It does not publish videos.
 
 The pinned API version is `2025-09-03`. The mirror follows child pages, child databases and the explicitly configured database; queries every database data source; recursively paginates blocks and page properties; and stores each API response separately. It does not search the workspace or follow linked/referenced pages. References are reported in the manifest. Raw JSON retains API fields except hosted file URLs and expiry values, which are replaced by local asset paths. Volatile request IDs and personal email fields are removed; a manifest records file hashes and sizes. External URLs stay links.
 

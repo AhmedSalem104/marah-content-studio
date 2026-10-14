@@ -14,11 +14,12 @@ Notion هو المصدر الأساسي للأفكار والنصوص وحالا
 | `docs/` | التوثيق التقني |
 | `automation/scripts/sync_notion.py` | أداة موجودة لمرآة API محددة النطاق |
 | `automation/notion-sync.config.json` | إعداد النطاق ومسار الإخراج |
-| `automation/workflows/notion-sync.yml.template` | قالب غير نشط، خارج مسار GitHub Actions التنفيذي |
+| `.github/workflows/notion-sync.yml` | سير عمل موجود، يدوي وكل ساعة، مع شرط تفعيل وحد زمني ٣٠ دقيقة |
+| `automation/workflows/notion-sync.yml.template` | قالب مرجعي غير تنفيذي |
 | `tests/test_sync_notion.py` | ٧ اختبارات محلية |
 | `content/notion/api-current/` | مسار مستقبلي يُنشأ عند تشغيل ناجح؛ JSON وأصول API منفصلة عن التصدير |
 
-لا يوجد مجلد `rawexport/` أو تطبيق إنتاج أو هيكل monorepo. أتمتة الإنتاج وتخزين مخرجاته إضافات مستقبلية حسب الحاجة. [تفاصيل المزامنة](notion-sync.md) توضح نطاق API وحدوده؛ تجهيز الأداة لا يعني تشغيل المزامنة.
+لا يوجد مجلد `rawexport/` أو تطبيق إنتاج أو هيكل monorepo. أتمتة الإنتاج وتخزين مخرجاته إضافات مستقبلية حسب الحاجة. [تفاصيل المزامنة](notion-sync.md) توضح نطاق API وحدوده؛ تجهيز الأداة لا يعني تشغيل المزامنة. سير العمل محجوب بشرط `vars.NOTION_SYNC_ENABLED == 'true'`؛ يلزم إعداد سر `NOTION_TOKEN` لتكامل للقراءة فقط وضبط المتغير `NOTION_SYNC_ENABLED` إلى `true` قبل تشغيل فعلي ناجح.
 
 ## البنية المقترحة
 
