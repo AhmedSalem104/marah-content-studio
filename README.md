@@ -42,7 +42,8 @@
 | `content/notion/manifest.json` و`pipeline.json` | موجود: بيان النقل وبيانات البطاقات المنظمة |
 | `automation/scripts/sync_notion.py` | موجود: أداة مرآة API محددة النطاق، غير مشغلة فعليًا |
 | `automation/notion-sync.config.json` | موجود: نطاق القراءة ومسار الإخراج |
-| `automation/workflows/notion-sync.yml.template` | موجود: قالب غير نشط؛ ينتظر إعداد السر وتفعيله |
+| `.github/workflows/notion-sync.yml` | موجود: تشغيل يدوي وكل ساعة؛ متوقف حتى إعداد السر والمتغير |
+| `automation/workflows/notion-sync.yml.template` | موجود: قالب مرجعي |
 | `tests/test_sync_notion.py` | موجود: ٧ اختبارات محلية للمزامنة |
 | `content/notion/api-current/` | مستقبلي: مخرجات JSON وأصول API عند أول تشغيل ناجح |
 | أتمتة الإنتاج وتخزين مخرجاته | مستقبلي: يُضافان عند التنفيذ، دون إنشاء مجلدات أو تطبيقات شكلية |
