@@ -1,0 +1,6 @@
+{
+  "api_version": "2025-09-03",
+  "root_page": "3e43ab32c440810e99edc6c7737c3119",
+  "databases": ["d49a1dc094ae49819be1d46059ef3821"],
+  "output": "content/notion/api-current"
+}
