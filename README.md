@@ -24,6 +24,7 @@
 
 - [فهرس الأفكار المائة](content/notion/README.md)
 - [إعداد المزامنة وحدودها](docs/notion-sync.md)
+- [خطة الأتمتة المقترحة مع Buffer](docs/automation-plan.md)
 - [البنية وحدود المسؤوليات](docs/architecture.md)
 - [مسار الإنتاج والمراجعة](docs/production-flow.md)
 - [خريطة التنفيذ المرحلية](docs/roadmap.md)
@@ -67,3 +68,7 @@ python automation/scripts/sync_notion.py --config automation/notion-sync.config.
 النقطة التالية هي مراجعة مخطط البيانات وطريقة مزامنة Notion، ثم إنتاج حلقة تجريبية واحدة ضمن ميزانية محددة. راجع [خريطة التنفيذ](docs/roadmap.md) لمعايير الانتقال بين المراحل.
 
 هذا المستودع لا يمنح ترخيصًا لحقوق المستخدم أو الشخصيات أو مواد المحتوى. لا تضف ترخيصًا عامًا دون موافقة صاحب الحقوق.
+
+## خط أساس الأتمتة — 15 أكتوبر 2026
+
+اعتمد المستخدم توثيق مسار الإنتاج والنشر عبر Buffer إلى TikTok وYouTube Shorts وFacebook Page. الاختيارات التقنية المستهدفة: n8n وPostgreSQL، OpenAI API للنص، Nano Banana Pro للصور، ElevenLabs للصوت، Kling 3.0 للتحريك، Python/FFmpeg للتجميع، وCloudflare R2 للأصول. [خطة الأتمتة](docs/automation-plan.md) هي المرجع الأحدث لهذه الاختيارات وحدودها؛ ما زالت الخدمات غير مهيأة، ومعرفات النماذج ومزامنة الفم ودعم القنوات تحتاج تحققًا عند التنفيذ. لا توجد أتمتة إنتاج أو نشر فعالة.
